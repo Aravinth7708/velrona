@@ -23,7 +23,7 @@ const Header = () => {
             <img 
               src="/velrona_texted.png" 
               alt="Velrona" 
-              className="h-6 sm:h-10 lg:h-8 w-auto object-contain"
+              className="h-6 sm:h-10 lg:h-5 w-auto object-contain"
             />
           </a>
 
