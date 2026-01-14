@@ -30,8 +30,8 @@ const businesses: Business[] = [
     id: 1,
     name: "Onekit",
     tagline: "",
-    subtitle: "Food delivery reimagined",
-    description: "Zomato is one of the world's largest food delivery platforms, connecting millions of users with their favourite restaurants.",
+    subtitle: "Onekit Inc",
+    description: "Bringing ideas to life, one brand at a time. Onekit Inc partners with businesses to create impactful marketing through strategy, design, and storytelling.",
     bgColor: "dark",
     grayImage: onekitGray,
     orgImage: onekitOrg,
@@ -40,8 +40,8 @@ const businesses: Business[] = [
     id: 2,
     name: "Ticpin",
     tagline: "A VELRONA COMPANY",
-    subtitle: "Fast commerce, smarter living",
-    description: "Blinkit delivers groceries and essentials in minutes, making everyday shopping faster and more convenient.",
+    subtitle: "Ticpin",
+    description: "Turning everyday plans into experiences. Ticpin helps you discover, book, and enjoy the best of dining, sports, and events - all in one place.",
     bgColor: "yellow",
     grayImage: ticpinGray,
     orgImage: ticpinOrg,
@@ -49,9 +49,9 @@ const businesses: Business[] = [
   {
     id: 3,
     name: "Caury",
-    tagline: "BY ZOMATO",
-    subtitle: "Creativity and community",
-    description: "District delivers immersive retail experiences, bringing together creativity, culture, and commerce.",
+    tagline: "",
+    subtitle: "Caury Farms",
+    description: "From cared cows to conscious living. Caury Farms offers authentic cow-based products produced ethically and supplied directly from the source.",
     bgColor: "dark",
     grayImage: cauryGray,
     orgImage: cauryOrg,
@@ -59,9 +59,9 @@ const businesses: Business[] = [
   {
     id: 4,
     name: "Ofran",
-    tagline: "BY ZOMATO",
-    subtitle: "Fueling the food ecosystem",
-    description: "Hyperpure helps restaurants source the freshest ingredients, ensuring quality from farm to table.",
+    tagline: "",
+    subtitle: "Ofran",
+    description: "Simplifying compliance, one business at a time. Ofran helps entrepreneurs register, protect, and manage their businesses with reliable legal and compliance services.",
     bgColor: "dark",
     grayImage: ofranGray,
     orgImage: ofranOrg,
@@ -102,8 +102,12 @@ const BusinessCarousel = () => {
             <h2 className="section-heading text-3xl lg:text-4xl font-semibold text-foreground">
               Our businesses
             </h2>
-            <p className="mt-6 max-w-2xl text-muted-foreground text-base lg:text-lg leading-relaxed">
-              As a parent organization, Velrona empowers its group companies with a common foundation of innovation, adaptability, and excellence.
+            <p className="mt-6 max-w-3xl text-left text-muted-foreground text-lg lg:text-xl leading-relaxed">
+              <span className="inline-block">
+                As a parent organization, Velrona empowers its group companies with a common foundation of innovation,
+              </span>
+              <br />
+              <span className="inline-block">adaptability, and excellence.</span>
             </p>
           </motion.div>
 
@@ -131,7 +135,7 @@ const BusinessCarousel = () => {
         {/* Carousel */}
         <div
           ref={carouselRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-6 px-6 lg:mx-0 lg:px-0"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-6 lg:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {businesses.map((business, index) => (
@@ -141,30 +145,30 @@ const BusinessCarousel = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="business-card-container flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] snap-start group"
+              className="business-card-container flex-shrink-0 w-[320px] sm:w-[360px] lg:w-[420px] snap-start group"
             >
               {/* Image Card with Hover Effect */}
-              <div className="business-card aspect-[4/3] relative overflow-hidden rounded-xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-700">
+              <div className="business-card aspect-[4/3] relative overflow-hidden rounded-2xl cursor-pointer shadow-md transition-opacity duration-700">
                 {/* Gray Image (default) */}
                 <img
                   src={business.grayImage}
                   alt={`${business.name} - default`}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-[1.03]"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-0"
                   style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
                 />
                 {/* Colored Image (on hover) */}
                 <img
                   src={business.orgImage}
                   alt={`${business.name} - colored`}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-[1.03]"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0 group-hover:opacity-100"
                   style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
                 />
               </div>
-              <div className="mt-4">
-                <h4 className="text-lg lg:text-xl font-semibold text-foreground">
+              <div className="mt-6 px-2">
+                <h4 className="text-xl lg:text-2xl font-semibold text-foreground">
                   {business.subtitle}
                 </h4>
-                <p className="mt-2 text-sm lg:text-base text-muted-foreground leading-relaxed">
+                <p className="mt-2 text-base lg:text-lg text-muted-foreground leading-relaxed">
                   {business.description}
                 </p>
               </div>

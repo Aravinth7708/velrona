@@ -13,7 +13,7 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative flex flex-col items-center justify-center min-h-screen bg-white px-6 py-16 overflow-hidden">
-      
+
       {/* PixelBlast Background */}
       <div className="absolute inset-0 w-full h-full opacity-30">
         <PixelBlast
@@ -39,10 +39,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center max-w-6xl"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-foreground tracking-tight">
-            Velrona isn't just a company.
-            <br />
-            It's a vision with purpose.
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-foreground tracking-tight">
+            <div className="mb-8">Velrona isn't just a company.</div>
+            <div>It's a vision with purpose.</div>
           </h1>
         </motion.div>
       </div>
