@@ -2,6 +2,18 @@ import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Import gray images (default state)
+import onekitGray from "@/assets/onekit_gray.jpg";
+import ticpinGray from "@/assets/ticpin_gray.jpg";
+import cauryGray from "@/assets/caury_gray.jpg";
+import ofranGray from "@/assets/ofran_gray.jpg";
+
+// Import org images (hover state)
+import onekitOrg from "@/assets/onekit_org.jpg";
+import ticpinOrg from "@/assets/ticpin_org.jpg";
+import cauryOrg from "@/assets/caury_org.jpg";
+import ofranOrg from "@/assets/ofran_org.jpg";
+
 interface Business {
   id: number;
   name: string;
@@ -9,40 +21,50 @@ interface Business {
   subtitle: string;
   description: string;
   bgColor: "yellow" | "dark";
+  grayImage: string;
+  orgImage: string;
 }
 
 const businesses: Business[] = [
   {
     id: 1,
-    name: "Zomato",
+    name: "Onekit",
     tagline: "",
     subtitle: "Food delivery reimagined",
     description: "Zomato is one of the world's largest food delivery platforms, connecting millions of users with their favourite restaurants.",
     bgColor: "dark",
+    grayImage: onekitGray,
+    orgImage: onekitOrg,
   },
   {
     id: 2,
-    name: "blinkit",
+    name: "Ticpin",
     tagline: "A VELRONA COMPANY",
     subtitle: "Fast commerce, smarter living",
     description: "Blinkit delivers groceries and essentials in minutes, making everyday shopping faster and more convenient.",
     bgColor: "yellow",
+    grayImage: ticpinGray,
+    orgImage: ticpinOrg,
   },
   {
     id: 3,
-    name: "district",
+    name: "Caury",
     tagline: "BY ZOMATO",
     subtitle: "Creativity and community",
     description: "District delivers immersive retail experiences, bringing together creativity, culture, and commerce.",
     bgColor: "dark",
+    grayImage: cauryGray,
+    orgImage: cauryOrg,
   },
   {
     id: 4,
-    name: "hyperpure",
+    name: "Ofran",
     tagline: "BY ZOMATO",
     subtitle: "Fueling the food ecosystem",
     description: "Hyperpure helps restaurants source the freshest ingredients, ensuring quality from farm to table.",
     bgColor: "dark",
+    grayImage: ofranGray,
+    orgImage: ofranOrg,
   },
 ];
 
@@ -51,12 +73,12 @@ const BusinessCarousel = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = (direction: "prev" | "next") => {
-    const newIndex = direction === "next" 
+    const newIndex = direction === "next"
       ? Math.min(currentIndex + 1, businesses.length - 1)
       : Math.max(currentIndex - 1, 0);
-    
+
     setCurrentIndex(newIndex);
-    
+
     if (carouselRef.current) {
       const cardWidth = carouselRef.current.querySelector(".business-card-container")?.clientWidth || 400;
       carouselRef.current.scrollTo({
@@ -81,7 +103,7 @@ const BusinessCarousel = () => {
               Our businesses
             </h2>
             <p className="mt-6 max-w-2xl text-muted-foreground text-base lg:text-lg leading-relaxed">
-             As a parent organization, Velrona empowers its group companies with a common foundation of innovation, adaptability, and excellence.
+              As a parent organization, Velrona empowers its group companies with a common foundation of innovation, adaptability, and excellence.
             </p>
           </motion.div>
 
@@ -119,29 +141,24 @@ const BusinessCarousel = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="business-card-container flex-shrink-0 w-[300px] sm:w-[350px] lg:w-[400px] snap-start"
+              className="business-card-container flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] snap-start group"
             >
-              <div
-                className={`business-card aspect-[4/3] flex flex-col items-center justify-center p-8 ${
-                  business.bgColor === "yellow" ? "business-card-yellow" : "business-card-dark"
-                }`}
-              >
-                <h3
-                  className={`text-3xl lg:text-4xl font-bold ${
-                    business.bgColor === "yellow" ? "text-velrona-dark" : "text-white"
-                  }`}
-                >
-                  {business.name}
-                </h3>
-                {business.tagline && (
-                  <p
-                    className={`mt-2 text-xs tracking-widest ${
-                      business.bgColor === "yellow" ? "text-velrona-dark/80" : "text-white/70"
-                    }`}
-                  >
-                    {business.tagline}
-                  </p>
-                )}
+              {/* Image Card with Hover Effect */}
+              <div className="business-card aspect-[4/3] relative overflow-hidden rounded-xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-700">
+                {/* Gray Image (default) */}
+                <img
+                  src={business.grayImage}
+                  alt={`${business.name} - default`}
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-[1.03]"
+                  style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
+                />
+                {/* Colored Image (on hover) */}
+                <img
+                  src={business.orgImage}
+                  alt={`${business.name} - colored`}
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-[1.03]"
+                  style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
+                />
               </div>
               <div className="mt-4">
                 <h4 className="text-lg lg:text-xl font-semibold text-foreground">
