@@ -27,9 +27,9 @@ const Footer = () => {
           {/* Logo */}
           <div className="col-span-2 md:col-span-1">
             <a href="#home" className="flex items-center">
-              <img 
-                src="/velrona_texted.png" 
-                alt="Velrona" 
+              <img
+                src="/velrona_texted.png"
+                alt="Velrona"
                 className="h-8 lg:h-10 w-auto object-contain"
               />
             </a>
@@ -91,17 +91,11 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Velrona Ltd.
+              © {currentYear} Velrona Technologies Private Limited
             </p>
             <div className="flex items-center gap-6">
               <a
-                href="#privacy"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Privacy policy
-              </a>
-              <a
-                href="#terms"
+                href="/terms-conditions"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Terms

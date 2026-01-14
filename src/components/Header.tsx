@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#home", active: true },
-  { label: "Culture", href: "#culture" },
+  { label: "Culture", href: "/culture" },
   { label: "Careers", href: "#careers" },
   { label: "Investors", href: "#investors" },
   { label: "Blog", href: "#blog" },
@@ -20,9 +20,9 @@ const Header = () => {
         <div className="flex items-center justify-center lg:justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center lg:mr-auto">
-            <img 
-              src="/velrona_texted.png" 
-              alt="Velrona" 
+            <img
+              src="/velrona_texted.png"
+              alt="Velrona"
               className="h-6 sm:h-10 lg:h-5 w-auto object-contain"
             />
           </a>
